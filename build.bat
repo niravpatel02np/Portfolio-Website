@@ -5,14 +5,21 @@ echo ===== Starting build =====
 echo Deleting old build files...
 del /Q index.html
 del /Q main.js
+del /Q home.js
+del /Q awards.js
 del /Q style.css
 rd /S /Q images
 rd /S /Q videos
 
 :: ---- Step 1: Obfuscate JS ----
 echo ---
-echo Obfuscating JS...
+echo Obfuscating JS files...
+
 call javascript-obfuscator "src\main.js" --output "main.js"
+call javascript-obfuscator "src\home.js" --output "home.js"
+call javascript-obfuscator "src\awards.js" --output "awards.js"
+
+echo JS obfuscation complete.
 
 :: ---- Step 2: Minify CSS ----
 echo ---
